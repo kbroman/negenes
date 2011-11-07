@@ -1,0 +1,71 @@
+
+Revision history for the R/negenes package
+----------------------------------------------------------------------
+copyright (c) 2002-2011, Karl W Broman
+Licensed under the GNU General Public License version 2 (June, 1991)
+http://www.biostat.wisc.edu/~kbroman/software/negenes.html
+----------------------------------------------------------------------
+
+Version 0.99-2, 11/7/2011:
+
+  Added NAMESPACE.
+
+
+Version 0.98-9, 3/20/2011:
+
+  Replaced datafile for Mtb80 with a compressed version.
+
+Version 0.98-8, 6/30/2009:
+
+  Added a CITATION file.
+
+
+Version 0.98-7, 10/9/2007:
+
+  Minuscule changes to the help files, to conform to a change in R.
+  
+
+Version 0.98-5, 6/30/2004:
+
+  Slight revision to the negenes() function: added PACKAGE="negenes"
+  in the .C() call.
+
+
+Version 0.98-4, 2/2/2004:
+
+  Fixed a tiny error in the documentation.
+
+
+Version 0.98-3, 8/10/2002:
+
+  Revised the negenes function to return Rao-Blackwellized estimates
+  of the probability that each gene is essential, and of the posterior
+  mean of the total number of essential genes.
+
+
+Version 0.97, 7/31/2002:
+
+  Included a data object, Mtb80, containing the number of TA sites in
+  M. tuberculosis CDC1551 genome, by the "80% rule."
+
+
+Version 0.96, 7/16/2002:
+
+  Changed the argument "start" in negenes() to "startp", the initial
+  proportion of genes not known to be essential that will be assumed
+  essential to start the Gibbs sampler.
+
+
+Version 0.95, 7/14/2002:
+
+  Revised the package to take care of the case of insertion sites in
+  regions of gene overlap.  It is assumed that the genes 1, 2, ..., N
+  are in order around the genome.
+
+
+Version 0.90, 7/13/2002:
+
+  A newly created package.
+
+----------------------------------------------------------------------
+end of STATUS.txt

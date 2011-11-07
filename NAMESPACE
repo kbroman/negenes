@@ -1,0 +1,7 @@
+useDynLib(negenes)
+
+# Export functions
+export(negenes, sim.mutants)
+
+# imports
+importFrom(stats, quantile)
