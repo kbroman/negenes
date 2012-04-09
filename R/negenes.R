@@ -1,11 +1,22 @@
 ######################################################################
-# 
+#
 # negenes.R
 #
 # copyright (c) 2002-2012, Karl W Broman
 # last modified Mar, 2012
 # first written June, 2002
-# Licensed under the GNU General Public License version 2 (June, 1991)
+#
+#     This program is free software; you can redistribute it and/or
+#     modify it under the terms of the GNU General Public License,
+#     version 3, as published by the Free Software Foundation.
+#
+#     This program is distributed in the hope that it will be useful,
+#     but without any warranty; without even the implied warranty of
+#     merchantability or fitness for a particular purpose.  See the GNU
+#     General Public License, version 3, for more details.
+#
+#     A copy of the GNU General Public License, version 3, is available
+#     at http://www.r-project.org/Licenses/GPL-3
 #
 # Part of the R/qtl package
 # Contains: negenes, sim.mutants
@@ -15,7 +26,7 @@
 ######################################################################
 #
 # negenes: "Number of essential genes"
-# 
+#
 # n.sites = (x_i) = no. tranposon sites in each gene (alone)
 # counts  = (y_i) = no. mutants was observed for each gene (alone)
 #
@@ -39,12 +50,12 @@
 # calc.prob = if TRUE, return log posterior prob'y (up to scalar) for
 #             each saved iteration
 # return.output = if TRUE, include detailed Gibbs results in output
-# 
+#
 ######################################################################
 
 negenes <-
 function(n.sites, counts, n.sites2, counts2,
-         n.mcmc=5000, skip=49, burnin=500, 
+         n.mcmc=5000, skip=49, burnin=500,
          startp=1, trace=TRUE,
          calc.prob=FALSE, return.output=FALSE)
 {
@@ -109,7 +120,7 @@ function(n.sites, counts, n.sites2, counts2,
                as.integer(trace),
                as.double(startp),
                PACKAGE="negenes")
-  
+
   logprob <- output$logprob
   tot.ess <- output$n.ess
   geneprob <- output$geneprob
@@ -121,7 +132,7 @@ function(n.sites, counts, n.sites2, counts2,
             quantile(tot.ess,c(0.025,0.975)))
 
   if(return.output) {
-    if(!calc.prob) 
+    if(!calc.prob)
       return(list(n.essential=tot.ess, summary=summ,
                   geneprob=geneprob,output=output))
     else
@@ -130,10 +141,10 @@ function(n.sites, counts, n.sites2, counts2,
                   logprob=logprob, output=output))
   }
   else {
-    if(!calc.prob) 
+    if(!calc.prob)
       return(list(n.essential=tot.ess, summary=summ,
                   geneprob=geneprob))
-    else 
+    else
       return(list(n.essential=tot.ess, summary=summ,
                   geneprob=geneprob,logprob=logprob))
   }
@@ -148,7 +159,7 @@ function(n.sites, counts, n.sites2, counts2,
 # sim.mutants
 #
 # Simulate mutant count data
-# 
+#
 ######################################################################
 
 sim.mutants <-
@@ -159,7 +170,7 @@ function(n.sites, essential, n.sites2, n.mutants)
     stop("n.sites and essential must be the same length")
 
   if(missing(n.sites2)) n.sites2 <- rep(0,n.genes)
-    
+
   if(length(n.sites2) != n.genes)
     stop("n.sites and n.sites2 must be the same length")
 
