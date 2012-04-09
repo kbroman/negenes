@@ -2,8 +2,8 @@
 # 
 # negenes.R
 #
-# copyright (c) 2002-4, Karl W Broman
-# last modified June, 2004
+# copyright (c) 2002-2012, Karl W Broman
+# last modified Mar, 2012
 # first written June, 2002
 # Licensed under the GNU General Public License version 2 (June, 1991)
 #
@@ -100,7 +100,7 @@ function(n.sites, counts, n.sites2, counts2,
                output = as.integer(rep(0,(n.mcmc-1)*n.genes*temp+n.genes)),
                n.ess = as.integer(rep(0,n.mcmc)),
                geneprob = as.double(rep(0,n.genes)),
-               as.integer(rep(0,n.genes+1)),
+               as.integer(rep(0,n.genes+2)),
                as.integer(n.notknown),
                as.integer(notknown),
                as.integer(calc.prob),

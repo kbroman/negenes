@@ -1,6 +1,6 @@
 Package: negenes
-Version: 0.99-2
-Date: 7 Nov 2011
+Version: 1.0-1
+Date: 9 Mar 2012
 Title: Estimating the number of essential genes in a genome
 Author: Karl W Broman <kbroman@biostat.wisc.edu>
 Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
