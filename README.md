@@ -1,6 +1,6 @@
 ## R/negenes
 
-[![Build Status](https://travis-ci.org/kbroman/negenes.png?branch=master)](https://travis-ci.org/kbroman/negenes)
+[![Build Status](https://travis-ci.org/kbroman/negenes.svg?branch=master)](https://travis-ci.org/kbroman/negenes)
 
 [Karl W Broman](http://kbroman.org)
 
