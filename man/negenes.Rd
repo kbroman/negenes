@@ -72,7 +72,7 @@ negenes(n.sites, counts, n.sites2, counts2,
   essential genes in a genome by random transposon mutagenesis.
   Technical Report MS02-20, Department of Biostatistics, Johns Hopkins
   University, Baltimore, MD.
-  \url{http://www.biostat.biostat.wisc.edu/~kbroman/publications/ms0220.pdf}
+  \url{https://www.biostat.wisc.edu/~kbroman/publications/ms0220.pdf}
 }
 
 \author{Karl W Broman, \email{kbroman@biostat.wisc.edu}}
