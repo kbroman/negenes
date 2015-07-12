@@ -1,7 +1,7 @@
 Package: negenes
 Version: 1.0-2
 Date: 12 Jul 2015
-Title: Estimating the number of essential genes in a genome
+Title: Estimating the Number of Essential Genes in a Genome
 Author: Karl W Broman <kbroman@biostat.wisc.edu>
 Maintainer: Karl W Broman <kbroman@biostat.wisc.edu>
 Description: Estimating the number of essential genes in a genome on the basis of data from a random transposon mutagenesis experiment, through the use of a Gibbs sampler.
