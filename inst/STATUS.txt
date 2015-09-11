@@ -5,7 +5,7 @@ Licensed under the GNU General Public License version 2 (June, 1991)
 https://github.com/kbroman/negenes
 ----------------------------------------------------------------------
 
-Version 1.0-2, 2015-07-12:
+Version 1.0-3, 2015-09-11:
 
   Import sd from stats library in NAMESPACE.
 
