@@ -2,8 +2,8 @@
 #
 # negenes.R
 #
-# copyright (c) 2002-2012, Karl W Broman
-# last modified Mar, 2012
+# copyright (c) 2002-2016, Karl W Broman
+# last modified Apr, 2016
 # first written June, 2002
 #
 #     This program is free software; you can redistribute it and/or
@@ -31,8 +31,10 @@
 # counts  = (y_i) = no. mutants was observed for each gene (alone)
 #
 # n.sites2 = (w_i) = no. transposon sites shared by genes i and i+1
+#                    if NULL, assume all are 0
 # counts2  = (z_i) = no. mutants shared by genes i and i+1
-#            [in the above, take gene N+1 to be the same as gene 1
+#            [in the above, take gene N+1 to be the same as gene 1]
+#                    if NULL, assume all are 0
 #
 # n.mcmc    = number of Gibbs iterations to perform
 # skip      = an integer; only save every skip+1st iteration
@@ -54,7 +56,7 @@
 ######################################################################
 
 negenes <-
-function(n.sites, counts, n.sites2, counts2,
+function(n.sites, counts, n.sites2=NULL, counts2=NULL,
          n.mcmc=5000, skip=49, burnin=500,
          startp=1, trace=TRUE,
          calc.prob=FALSE, return.output=FALSE)
@@ -65,8 +67,8 @@ function(n.sites, counts, n.sites2, counts2,
   if(length(counts) != n.genes)
     stop("n.sites and counts must be the same length")
 
-  if(missing(n.sites2)) n.sites2 <- rep(0,n.genes)
-  if(missing(counts2)) counts2 <- rep(0,n.genes)
+  if(is.null(n.sites2)) n.sites2 <- rep(0,n.genes)
+  if(is.null(counts2)) counts2 <- rep(0,n.genes)
   if(length(n.sites2) != n.genes)
     stop("n.sites2 and n.sites must be the same length")
   if(length(counts2) != n.genes)
@@ -163,13 +165,13 @@ function(n.sites, counts, n.sites2, counts2,
 ######################################################################
 
 sim.mutants <-
-function(n.sites, essential, n.sites2, n.mutants)
+function(n.sites, essential, n.sites2=NULL, n.mutants)
 {
   n.genes <- length(n.sites)
   if(length(essential) != n.genes)
     stop("n.sites and essential must be the same length")
 
-  if(missing(n.sites2)) n.sites2 <- rep(0,n.genes)
+  if(is.null(n.sites2)) n.sites2 <- rep(0,n.genes)
 
   if(length(n.sites2) != n.genes)
     stop("n.sites and n.sites2 must be the same length")

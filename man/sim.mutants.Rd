@@ -5,10 +5,10 @@
 
 \description{
   Simulate data for a random transposon mutagenesis experiment.
-}  
+}
 
 \usage{
-sim.mutants(n.sites, essential, n.sites2, n.mutants)
+sim.mutants(n.sites, essential, n.sites2=NULL, n.mutants)
 }
 \arguments{
   \item{n.sites}{A vector specifying the number of transposon insertion
@@ -35,7 +35,7 @@ sim.mutants(n.sites, essential, n.sites2, n.mutants)
   If \code{n.sites2} is not missing and has some positive entries, a
   matrix with two columns is returned.  The first column contains the
   number of mutants observed for each gene alone; the second column
-  contains the number of mutants observed shared by adjacent genes. 
+  contains the number of mutants observed shared by adjacent genes.
 }
 
 \references{
@@ -63,6 +63,6 @@ counts <- sim.mutants(Mtb80[,1], essential, Mtb80[,2], 759)
 output <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2])}
 }
 
-\seealso{ \code{\link[negenes]{negenes}}, \code{\link[negenes]{Mtb80}} } 
+\seealso{ \code{\link[negenes]{negenes}}, \code{\link[negenes]{Mtb80}} }
 
 \keyword{datagen}

@@ -10,8 +10,8 @@
 }
 
 \usage{
-negenes(n.sites, counts, n.sites2, counts2,
-        n.mcmc=5000, skip=49, burnin=500, 
+negenes(n.sites, counts, n.sites2=NULL, counts2=NULL,
+        n.mcmc=5000, skip=49, burnin=500,
         startp=1, trace=TRUE,
         calc.prob=FALSE, return.output=FALSE)
 }
@@ -24,21 +24,25 @@ negenes(n.sites, counts, n.sites2, counts2,
   \item{n.sites2}{A vector specfying the number of transposon insertion
     sites shared by adjacent genes.  The \emph{i}th element is the
     number of insertion sites shared by genes \emph{i} and \emph{i}+1.
-    The last element is for sites shared by genes \emph{N} and 1.}
+    The last element is for sites shared by genes \emph{N} and 1. If
+    NULL, assume all are 0.}
   \item{counts2}{A vector specfying the number of mutants shared by
-    adjacent gene (analogous to \code{n.sites2}).}
+    adjacent gene (analogous to \code{n.sites2}). The \emph{i}th element is the
+    number of mutants at sites shared by genes \emph{i} and \emph{i}+1.
+    The last element is for sites shared by genes \emph{N} and 1. If
+    NULL, assume all are 0.}
   \item{n.mcmc}{Number of Gibbs steps to perform.}
   \item{skip}{An integer; only save every \code{skip} + 1st step.}
- \item{burnin}{Number of initial Gibbs steps to run (output discarded).}
- \item{startp}{Initial proportion of genes for which no mutant was
+  \item{burnin}{Number of initial Gibbs steps to run (output discarded).}
+  \item{startp}{Initial proportion of genes for which no mutant was
    observed that will be assumed essential for the Gibbs sampler.  (Genes
    for which a mutant was observed are assumed non-essential; other
    genes are assumed essential independent with this probability.)}
- \item{trace}{If TRUE, print iteration number occassionally.}
- \item{calc.prob}{If TRUE, return the log posterior probability (up to an
+  \item{trace}{If TRUE, print iteration number occassionally.}
+  \item{calc.prob}{If TRUE, return the log posterior probability (up to an
    additive constant) for each saved iteration.}
- \item{return.output}{If TRUE, include detailed Gibbs results in the
-   output.} 
+  \item{return.output}{If TRUE, include detailed Gibbs results in the
+   output.}
 }
 
 \details{
@@ -50,7 +54,7 @@ negenes(n.sites, counts, n.sites2, counts2,
   of essential genes at each iteration of the Gibbs sampler)
   \code{summary} (a vector containing the estimated mean, SD, 2.5 percentile and
   97.5 percentile of the posterior distribution of the number of
-  essential genes.  
+  essential genes.
 
   The next component, \code{geneprob}, is a vector with one element for
   each gene, containing the estimated posterior probability that each
@@ -64,7 +68,7 @@ negenes(n.sites, counts, n.sites2, counts2,
   matrix with \code{n.mcmc} / (\code{skip} + 1) rows (corresponding to
   the Gibbs steps) and a column for each gene The entries in the matrix
   are either 0 (essential gene) or 1 (non-essential gene) according to
-  the state of that gene at that step in the Gibbs sampler.  
+  the state of that gene at that step in the Gibbs sampler.
 }
 
 \references{
@@ -95,6 +99,6 @@ output2 <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2], return=TRUE)
 }
 
 \seealso{ \code{\link[negenes]{sim.mutants}},
-  \code{\link[negenes]{Mtb80}} } 
+  \code{\link[negenes]{Mtb80}} }
 
 \keyword{models}
