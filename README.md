@@ -1,11 +1,11 @@
 ## R/negenes
 
 [![Build Status](https://travis-ci.org/kbroman/negenes.svg?branch=master)](https://travis-ci.org/kbroman/negenes)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/negenes)](http://cran.r-project.org/package=negenes)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/negenes)](https://cran.r-project.org/package=negenes)
 
 [Karl W Broman](http://kbroman.org)
 
-[R/negenes](http://github.com/kbroman/negenes) is an R package for estimating the number of essential genes
+[R/negenes](https://github.com/kbroman/negenes) is an R package for estimating the number of essential genes
 in a genome on the basis of data from a random transposon mutagenesis
 experiment, through the use of a Gibbs sampler.
 
@@ -21,4 +21,4 @@ merchantability or fitness for a particular purpose.  See the GNU
 General Public License for more details.
 
 A copy of the GNU General Public License, version 3, is available at
-<http://www.r-project.org/Licenses/GPL-3>
+<https://www.r-project.org/Licenses/GPL-3>
