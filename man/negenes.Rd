@@ -92,10 +92,13 @@ essential[sample(1:nrow(Mtb80),ceiling(nrow(Mtb80)*0.44))] <- 1
 counts <- sim.mutants(Mtb80[,1], essential, Mtb80[,2], 759)
 
 # run the Gibbs sampler without returning detailed output
-output <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2])
-
+\dontrun{output <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2])}
+\dontshow{output <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2],
+                            n.mcmc=100, skip=0, burnin=0)}
 # run the Gibbs sampler, returning the detailed output
-output2 <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2], return=TRUE)
+\dontrun{output2 <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2], return=TRUE)}
+\dontshow{output2 <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2], return=TRUE,
+                            n.mcmc=100, skip=0, burnin=0)}
 }
 
 \seealso{ \code{\link[negenes]{sim.mutants}},

@@ -5,9 +5,11 @@ Licensed under the GNU General Public License version 2 (June, 1991)
 https://github.com/kbroman/negenes
 ----------------------------------------------------------------------
 
-Verison 1.0-7, 2018-04-02:
+Verison 1.0-8, 2018-04-02:
 
-  Small changes to avoid Note about "R_registerRoutines"
+  Small changes to avoid Note about "R_registerRoutines".
+
+  Speed up examples for negenes().
 
 
 Version 1.0-5, 2016-05-21:
