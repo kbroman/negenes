@@ -1,60 +1,89 @@
-######################################################################
-#
-# negenes.R
-#
-# copyright (c) 2002-2016, Karl W Broman
-# last modified Apr, 2016
-# first written June, 2002
-#
-#     This program is free software; you can redistribute it and/or
-#     modify it under the terms of the GNU General Public License,
-#     version 3, as published by the Free Software Foundation.
-#
-#     This program is distributed in the hope that it will be useful,
-#     but without any warranty; without even the implied warranty of
-#     merchantability or fitness for a particular purpose.  See the GNU
-#     General Public License, version 3, for more details.
-#
-#     A copy of the GNU General Public License, version 3, is available
-#     at https://www.r-project.org/Licenses/GPL-3
-#
-# Part of the R/qtl package
-# Contains: negenes, sim.mutants
-#
-######################################################################
-
-######################################################################
-#
-# negenes: "Number of essential genes"
-#
-# n.sites = (x_i) = no. tranposon sites in each gene (alone)
-# counts  = (y_i) = no. mutants was observed for each gene (alone)
-#
-# n.sites2 = (w_i) = no. transposon sites shared by genes i and i+1
-#                    if NULL, assume all are 0
-# counts2  = (z_i) = no. mutants shared by genes i and i+1
-#            [in the above, take gene N+1 to be the same as gene 1]
-#                    if NULL, assume all are 0
-#
-# n.mcmc    = number of Gibbs iterations to perform
-# skip      = an integer; only save every skip+1st iteration
-# burnin    = number of initial Gibbs steps to run (output discarded)
-#
-# startp    = Initial proportion of genes with no observed gene that will
-#             be assumed essential for the Gibbs sampler.
-#             If startp=0, we'll start with theta=1 for all genes
-#             If startp=1, we'll start with theta=1 only for genes
-#             for which a mutant was observed,
-#             Otherwise, for genes for which a mutant was not
-#             observed, theta ~ bernoulli(1-p), independently
-#
-# trace     = if TRUE, print iteration number occassionally
-# calc.prob = if TRUE, return log posterior prob'y (up to scalar) for
-#             each saved iteration
-# return.output = if TRUE, include detailed Gibbs results in output
-#
-######################################################################
-
+#' Estimate the number of essential genes in a genome
+#'
+#' Estimate, via a Gibbs sampler, the posterior distribution of the number of
+#' essential genes in a genome with data from a random transposon mutagenesis
+#' experiment. (See the technical report cited below.)
+#'
+#' @param n.sites A vector specifying the number of transposon insertion sites
+#' in each gene (alone).  All elements must by strictly positive.
+#' @param counts A vector specifying the number of mutants observed for each
+#' gene (alone).  Must be the same length as `n.sites`, and all elements
+#' must be non-negative integers.
+#' @param n.sites2 A vector specfying the number of transposon insertion sites
+#' shared by adjacent genes.  The *i*th element is the number of insertion
+#' sites shared by genes *i* and *i*+1.  The last element is for
+#' sites shared by genes *N* and 1. If NULL, assume all are 0.
+#' @param counts2 A vector specfying the number of mutants shared by adjacent
+#' gene (analogous to `n.sites2`). The *i*th element is the number of
+#' mutants at sites shared by genes *i* and *i*+1.  The last element
+#' is for sites shared by genes *N* and 1. If NULL, assume all are 0.
+#' @param n.mcmc Number of Gibbs steps to perform.
+#' @param skip An integer; only save every `skip` + 1st step.
+#' @param burnin Number of initial Gibbs steps to run (output discarded).
+#' @param startp Initial proportion of genes for which no mutant was observed
+#' that will be assumed essential for the Gibbs sampler.  (Genes for which a
+#' mutant was observed are assumed non-essential; other genes are assumed
+#' essential independent with this probability.)
+#' @param trace If TRUE, print iteration number occassionally.
+#' @param calc.prob If TRUE, return the log posterior probability (up to an
+#' additive constant) for each saved iteration.
+#' @param return.output If TRUE, include detailed Gibbs results in the output.
+#'
+#' @return A list with components `n.essential` (containing the total
+#' number of essential genes at each iteration of the Gibbs sampler)
+#' `summary` (a vector containing the estimated mean, SD, 2.5 percentile
+#' and 97.5 percentile of the posterior distribution of the number of essential
+#' genes.
+#'
+#' The next component, `geneprob`, is a vector with one element for each
+#' gene, containing the estimated posterior probability that each gene is
+#' essential.  These are Rao-Blackwellized estimates.
+#'
+#' If the argument `calc.prob` was true, there will also be a component
+#' `logprob` containing the log (base e) of the posterior probability (up
+#' to an additive constant) at each Gibbs step.
+#'
+#' If the argument `return.output` was true, there will also be a matrix
+#' with `n.mcmc` / (`skip` + 1) rows (corresponding to the Gibbs
+#' steps) and a column for each gene The entries in the matrix are either 0
+#' (essential gene) or 1 (non-essential gene) according to the state of that
+#' gene at that step in the Gibbs sampler.
+#'
+#' @author Karl W Broman, \email{broman@@wisc.edu}
+#'
+#' @importFrom stats quantile sd
+#' @export
+#' @useDynLib negenes, .registration=TRUE
+#'
+#' @seealso [negenes::sim.mutants()], [negenes::Mtb80()]
+#'
+#' @references Blades, N. J. and Broman, K. W. (2002) Estimating the number of
+#' essential genes in a genome by random transposon mutagenesis.  Technical
+#' Report MS02-20, Department of Biostatistics, Johns Hopkins University,
+#' Baltimore, MD.
+#' <https://www.biostat.wisc.edu/~kbroman/publications/ms0220.pdf>
+#'
+#' @keywords models
+#'
+#' @examples
+#' data(Mtb80)
+#'
+#' # simulate 44% of genes to be essential
+#' essential <- rep(0,nrow(Mtb80))
+#' essential[sample(1:nrow(Mtb80),ceiling(nrow(Mtb80)*0.44))] <- 1
+#'
+#' # simulate 759 mutants
+#' counts <- sim.mutants(Mtb80[,1], essential, Mtb80[,2], 759)
+#'
+#' # run the Gibbs sampler without returning detailed output
+#' \dontrun{output <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2])}
+#' \dontshow{output <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2],
+#'                             n.mcmc=100, skip=0, burnin=0)}
+#' # run the Gibbs sampler, returning the detailed output
+#' \dontrun{output2 <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2], return=TRUE)}
+#' \dontshow{output2 <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2], return=TRUE,
+#'                             n.mcmc=100, skip=0, burnin=0)}
+#'
 negenes <-
 function(n.sites, counts, n.sites2=NULL, counts2=NULL,
          n.mcmc=5000, skip=49, burnin=500,
@@ -151,46 +180,3 @@ function(n.sites, counts, n.sites2=NULL, counts2=NULL,
                   geneprob=geneprob,logprob=logprob))
   }
 }
-
-
-
-
-
-######################################################################
-#
-# sim.mutants
-#
-# Simulate mutant count data
-#
-######################################################################
-
-sim.mutants <-
-function(n.sites, essential, n.sites2=NULL, n.mutants)
-{
-  n.genes <- length(n.sites)
-  if(length(essential) != n.genes)
-    stop("n.sites and essential must be the same length")
-
-  if(is.null(n.sites2)) n.sites2 <- rep(0,n.genes)
-
-  if(length(n.sites2) != n.genes)
-    stop("n.sites and n.sites2 must be the same length")
-
-  if(any(essential != 0 & essential != 1))
-    stop("essential must contain only 0's and 1's.")
-
-  if(n.mutants <= 0)
-    stop("n.mutants must be positive")
-
-  temp <- c(essential[-1],essential[1])
-  p <- c(n.sites*(1-essential), n.sites2*(1-essential)*(1-temp))
-
-  o <- table(factor(sample(1:(2*n.genes), n.mutants, replace=TRUE,
-                           prob=p), levels=1:(2*n.genes)))
-  names(o) <- NULL
-
-  if(sum(n.sites2)==0) return(o[1:n.genes])
-  else return(cbind(o[1:n.genes],o[-(1:n.genes)]))
-}
-
-# end of negenes.R
