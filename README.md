@@ -9,6 +9,19 @@
 in a genome on the basis of data from a random transposon mutagenesis
 experiment, through the use of a Gibbs sampler.
 
+See the following:
+
+- Lamichhane et al. (2003) [A post-genomic method for predicting
+  essential genes at subsaturation levels of mutagenesis: application
+  to Mycobacterium tuberculosis](https://www.biostat.wisc.edu/~kbroman/publications/mutagenesis.pdf).
+  Proc Natl Acad Sci USA 100:7213-7218
+  ([doi:10.1073/pnas.1231432100](https://doi.org/10.1073/pnas.1231432100))
+
+- Blades NJ, Broman KW (2002)
+  [Estimating the number of essential genes in a genome by random transposon mutagenesis](https://www.biostat.wisc.edu/~kbroman/publications/ms0220.pdf).
+  Technical Report MS02-20, Department of Biostatistics, Johns Hopkins University, Baltimore, MD
+
+
 ### License
 
 This package is free software; you can redistribute it and/or modify it
