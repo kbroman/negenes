@@ -14,10 +14,14 @@ citEntry(entry="article",
          year = 2003,
          volume = 100,
          pages = "7213-7218",
+         doi = "10.1073/pnas.1231432100",
+         url = "https://doi.org/10.1073/pnas.1231432100",
+         eprint = "https://www.pnas.org/content/pnas/100/12/7213.full.pdf",
 
          textVersion =
          paste("Lamichhane et al. (2003) A post-genomic method for",
                "predicting essential genes at subsaturation levels",
                "of mutagenesis: application to Mycobacterium",
-               "tuberculosis. Proc Natl Acad Sci USA 100:7213-7218")
+               "tuberculosis. Proc Natl Acad Sci USA 100:7213-7218",
+               "doi:10.1073/pnas.1231432100")
          )

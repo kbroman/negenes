@@ -57,11 +57,18 @@
 #'
 #' @seealso [negenes::sim.mutants()], [negenes::Mtb80()]
 #'
-#' @references Blades, N. J. and Broman, K. W. (2002) Estimating the number of
-#' essential genes in a genome by random transposon mutagenesis.  Technical
-#' Report MS02-20, Department of Biostatistics, Johns Hopkins University,
-#' Baltimore, MD.
-#' <https://www.biostat.wisc.edu/~kbroman/publications/ms0220.pdf>
+#' @references
+#' - Blades, N. J. and Broman, K. W. (2002) Estimating the number of
+#'   essential genes in a genome by random transposon mutagenesis.  Technical
+#'   Report MS02-20, Department of Biostatistics, Johns Hopkins University,
+#'   Baltimore, MD.
+#'   <https://www.biostat.wisc.edu/~kbroman/publications/ms0220.pdf>
+#'
+#' - Lamichhane et al. (2003) A post-genomic method for predicting
+#'   essential genes at subsaturation levels of mutagenesis:
+#'   application to Mycobacterium, tuberculosis. Proc Natl Acad Sci USA
+#'   100:7213-7218
+#'   [doi:10.1073/pnas.1231432100](https://doi.org/10.1073/pnas.1231432100)
 #'
 #' @keywords models
 #'

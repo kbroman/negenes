@@ -91,11 +91,18 @@ counts <- sim.mutants(Mtb80[,1], essential, Mtb80[,2], 759)
 
 }
 \references{
-Blades, N. J. and Broman, K. W. (2002) Estimating the number of
+\itemize{
+\item Blades, N. J. and Broman, K. W. (2002) Estimating the number of
 essential genes in a genome by random transposon mutagenesis.  Technical
 Report MS02-20, Department of Biostatistics, Johns Hopkins University,
 Baltimore, MD.
 \url{https://www.biostat.wisc.edu/~kbroman/publications/ms0220.pdf}
+\item Lamichhane et al. (2003) A post-genomic method for predicting
+essential genes at subsaturation levels of mutagenesis:
+application to Mycobacterium, tuberculosis. Proc Natl Acad Sci USA
+100:7213-7218
+\href{https://doi.org/10.1073/pnas.1231432100}{doi:10.1073/pnas.1231432100}
+}
 }
 \seealso{
 \code{\link[negenes:sim.mutants]{negenes::sim.mutants()}}, \code{\link[negenes:Mtb80]{negenes::Mtb80()}}
