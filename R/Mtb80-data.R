@@ -39,4 +39,4 @@
 #' # run the Gibbs sampler
 #' output <- negenes(Mtb80[,1], counts[,1], Mtb80[,2], counts[,2])}
 #'
-"Mtb80"
+NULL
