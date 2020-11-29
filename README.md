@@ -1,6 +1,6 @@
 ## R/negenes
 
-[![Build Status](https://travis-ci.org/kbroman/negenes.svg?branch=master)](https://travis-ci.org/kbroman/negenes)
+[![R build status](https://github.com/kbroman/negenes/workflows/R-CMD-check/badge.svg)](https://github.com/kbroman/negenes/actions)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/negenes)](https://cran.r-project.org/package=negenes)
 
 [Karl W Broman](https://kbroman.org)
