@@ -13,7 +13,7 @@ both that gene and the following gene.  There are 4204 rows; the 46 genes
 with no such site are not included.
 }
 \source{
-\url{http://www.tigr.org}
+\url{https://www.jcvi.org/} (formerly TIGR)
 }
 \description{
 Number of insertion sites in the initial 80\% of each gene in the

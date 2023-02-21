@@ -22,7 +22,7 @@
 #' Baltimore, MD.
 #' <https://www.biostat.wisc.edu/~kbroman/publications/ms0220.pdf>
 #'
-#' @source <http://www.tigr.org>
+#' @source <https://www.jcvi.org/> (formerly TIGR)
 #'
 #' @keywords datasets
 #'
