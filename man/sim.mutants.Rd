@@ -57,7 +57,7 @@ Baltimore, MD.
 \url{https://www.biostat.wisc.edu/~kbroman/publications/ms0220.pdf}
 }
 \seealso{
-\code{\link[negenes:negenes]{negenes::negenes()}}, \code{\link[negenes:Mtb80]{negenes::Mtb80()}}
+\code{\link[=negenes]{negenes()}}, \code{\link[=Mtb80]{Mtb80()}}
 }
 \author{
 Karl W Broman, \email{broman@wisc.edu}

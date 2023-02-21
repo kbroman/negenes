@@ -3,13 +3,15 @@
 \name{Mtb80}
 \alias{Mtb80}
 \title{Number of insertion sites in each gene in M tb CDC1551}
-\format{A matrix with two columns.  Each row corresponds to a gene.  (The
+\format{
+A matrix with two columns.  Each row corresponds to a gene.  (The
 row names are the MT numbers of the genes.)  The element in the first column
 is the number of transposon insertion sites in the initial 80\% that appear
 in the corresponding gene and in no other gene.  The element in the second
 column is the number of transposon insertion sites in the initial 80\% of
 both that gene and the following gene.  There are 4204 rows; the 46 genes
-with no such site are not included.}
+with no such site are not included.
+}
 \source{
 \url{http://www.tigr.org}
 }
@@ -39,6 +41,6 @@ Baltimore, MD.
 \url{https://www.biostat.wisc.edu/~kbroman/publications/ms0220.pdf}
 }
 \seealso{
-\code{\link[negenes:negenes]{negenes::negenes()}}, \code{\link[negenes:sim.mutants]{negenes::sim.mutants()}}
+\code{\link[=negenes]{negenes()}}, \code{\link[=sim.mutants]{sim.mutants()}}
 }
 \keyword{datasets}

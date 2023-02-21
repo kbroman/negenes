@@ -1,6 +1,6 @@
 #' Number of insertion sites in each gene in M tb CDC1551
 #'
-#' Number of insertion sites in the initial 80\% of each gene in the
+#' Number of insertion sites in the initial 80% of each gene in the
 #' _Mycobacterium tuberculosis_ CDC1551 genome.
 #'
 #'
@@ -8,9 +8,9 @@
 #'
 #' @format A matrix with two columns.  Each row corresponds to a gene.  (The
 #' row names are the MT numbers of the genes.)  The element in the first column
-#' is the number of transposon insertion sites in the initial 80\% that appear
+#' is the number of transposon insertion sites in the initial 80% that appear
 #' in the corresponding gene and in no other gene.  The element in the second
-#' column is the number of transposon insertion sites in the initial 80\% of
+#' column is the number of transposon insertion sites in the initial 80% of
 #' both that gene and the following gene.  There are 4204 rows; the 46 genes
 #' with no such site are not included.
 #'
