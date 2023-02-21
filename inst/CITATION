@@ -1,6 +1,6 @@
 citHeader("To cite R/negenes in publications use:")
 
-citEntry(entry="article",
+bibentry(bibtype="article",
          title = "A post-genomic method for predicting essential genes at subsaturation levels of mutagenesis: application to Mycobacterium tuberculosis",
          author = personList(person("Gyanu", "Lamichhane"),
                              person("Matteo", "Zignol"),
