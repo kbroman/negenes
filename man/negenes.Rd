@@ -111,7 +111,7 @@ Baltimore, MD.
 essential genes at subsaturation levels of mutagenesis:
 application to Mycobacterium, tuberculosis. Proc Natl Acad Sci USA
 100:7213-7218
-\href{https://doi.org/10.1073/pnas.1231432100}{doi:10.1073/pnas.1231432100}
+\doi{10.1073/pnas.1231432100}
 }
 }
 \seealso{
