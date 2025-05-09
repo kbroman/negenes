@@ -1,10 +1,10 @@
 ## Revision history for the R/negenes package
 
-### Version 1.0-13, 2023-02-21
+### Version 1.0-14, 2025-05-09
 
 - Changelog -> NEWS.md
 
-- In CITATION file, citEntry() -> bibentry()
+- In CITATION file, citEntry() -> bibentry() and personList() -> c()
 
 
 ### Version 1.0-12, 2019-08-05
