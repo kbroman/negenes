@@ -1,6 +1,6 @@
 ## Revision history for the R/negenes package
 
-### Version 1.0-14, 2025-05-09
+### Version 1.2, 2025-05-11
 
 - Changelog -> NEWS.md
 
