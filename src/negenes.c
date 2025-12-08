@@ -29,7 +29,6 @@
 #include <stdio.h>
 #include <R.h>
 #include <Rmath.h>
-#include <R_ext/PrtUtil.h>
 #include "negenes.h"
 
 /**********************************************************************
@@ -74,10 +73,10 @@
 
 /* Wrapper for R */
 void R_negenes(int *n_genes, int *n_mutants, int *n_sites, int *n_sites2,
-	       int *known, int *n_mcmc, int *burnin, int *skip, int *output,
-	       int *n_ess, double *geneprob, int *curstate, int *n_w,
-	       int *w, int *calcprob, double *logprob, int *saveoutput,
-	       int *trace, double *startp)
+           int *known, int *n_mcmc, int *burnin, int *skip, int *output,
+           int *n_ess, double *geneprob, int *curstate, int *n_w,
+           int *w, int *calcprob, double *logprob, int *saveoutput,
+           int *trace, double *startp)
 {
   int **Output;
 
@@ -90,18 +89,18 @@ void R_negenes(int *n_genes, int *n_mutants, int *n_sites, int *n_sites2,
   curstate++;
 
   negenes(*n_genes, *n_mutants, n_sites, n_sites2, known, *n_mcmc,
-	  *burnin, *skip, Output, n_ess, geneprob, curstate, *n_w,
-	  w, *calcprob, logprob, *saveoutput, *trace, *startp);
+      *burnin, *skip, Output, n_ess, geneprob, curstate, *n_w,
+      w, *calcprob, logprob, *saveoutput, *trace, *startp);
 
   PutRNGstate(); /* put random number seed */
 }
 
 /* The actual function */
 void negenes(int n_genes, int n_mutants, int *n_sites, int *n_sites2,
-	     int *known, int n_mcmc, int burnin, int skip, int **Output,
-	     int *n_ess, double *geneprob, int *curstate, int n_w,
-	     int *w, int calcprob, double *logprob, int saveoutput,
-	     int trace, double startp)
+         int *known, int n_mcmc, int burnin, int skip, int **Output,
+         int *n_ess, double *geneprob, int *curstate, int n_w,
+         int *w, int calcprob, double *logprob, int saveoutput,
+         int trace, double startp)
 {
   int i, j, s, oldstate;
   int cursum, curnum;
@@ -121,7 +120,7 @@ void negenes(int n_genes, int n_mutants, int *n_sites, int *n_sites2,
   else { /* random start */
     for(i=0; i<n_genes; i++) {
       if(known[i]==1 || unif_rand() > startp)
-	curstate[i] = 1;
+    curstate[i] = 1;
       else curstate[i] = 0;
     }
   }
@@ -133,7 +132,7 @@ void negenes(int n_genes, int n_mutants, int *n_sites, int *n_sites2,
   for(i=0; i<n_genes; i++) {
     curnum += curstate[i];
     cursum += (curstate[i]*n_sites[i] +
-	       curstate[i]*curstate[i+1]*n_sites2[i]);
+           curstate[i]*curstate[i+1]*n_sites2[i]);
   }
 
   /* begin Gibbs iterations */
@@ -145,26 +144,26 @@ void negenes(int n_genes, int n_mutants, int *n_sites, int *n_sites2,
 
       for(j=0; j<n_w; j++) {
 
-	p = gibbsProb(curstate[w[j]], curstate[w[j]-1], curstate[w[j]+1],
-		      n_sites[w[j]], n_sites2[w[j]], n_sites2[w[j]-1],
-		      curnum, cursum, n_mutants, n_genes);
+    p = gibbsProb(curstate[w[j]], curstate[w[j]-1], curstate[w[j]+1],
+              n_sites[w[j]], n_sites2[w[j]], n_sites2[w[j]-1],
+              curnum, cursum, n_mutants, n_genes);
 
-	oldstate = curstate[w[j]];
+    oldstate = curstate[w[j]];
 
-	/* simulate new state */
-	if(unif_rand() < p)  curstate[w[j]] = 1;
-	else curstate[w[j]] = 0;
+    /* simulate new state */
+    if(unif_rand() < p)  curstate[w[j]] = 1;
+    else curstate[w[j]] = 0;
 
-	/* make curstate wrap around */
-	if(w[j]==0) curstate[n_genes] = curstate[0];
-	else if(w[j]==n_genes-1) curstate[-1] = curstate[n_genes-1];
+    /* make curstate wrap around */
+    if(w[j]==0) curstate[n_genes] = curstate[0];
+    else if(w[j]==n_genes-1) curstate[-1] = curstate[n_genes-1];
 
-	/* update curnum and cursum */
-	curnum += (curstate[w[j]]-oldstate);
+    /* update curnum and cursum */
+    curnum += (curstate[w[j]]-oldstate);
 
-	cursum += (curstate[w[j]]-oldstate)*
-	  (n_sites[w[j]] + curstate[w[j]+1]*n_sites2[w[j]] +
-	   curstate[w[j]-1]*n_sites2[w[j]-1]);
+    cursum += (curstate[w[j]]-oldstate)*
+      (n_sites[w[j]] + curstate[w[j]+1]*n_sites2[w[j]] +
+       curstate[w[j]-1]*n_sites2[w[j]-1]);
 
       } /* end loop over genes */
     } /* end loop over skips */
@@ -174,21 +173,21 @@ void negenes(int n_genes, int n_mutants, int *n_sites, int *n_sites2,
       n_ess[i] = 0;
 
       for(j=0; j<n_genes; j++) {
-	/* Calculate Gibbs prob for Rao-Blackwellized ests */
-	if(known[j]) p=1.0; /* mutant observed => non-essential */
-	else p = gibbsProb(curstate[j],curstate[j+1],curstate[j-1],
-			   n_sites[j], n_sites2[j], n_sites2[j-1],
-			   curnum, cursum, n_mutants, n_genes);
+    /* Calculate Gibbs prob for Rao-Blackwellized ests */
+    if(known[j]) p=1.0; /* mutant observed => non-essential */
+    else p = gibbsProb(curstate[j],curstate[j+1],curstate[j-1],
+               n_sites[j], n_sites2[j], n_sites2[j-1],
+               curnum, cursum, n_mutants, n_genes);
 
-	n_ess[i] += curstate[j];
-	geneprob[j] += (1-p);
-	if(saveoutput) Output[j][i] = curstate[j];
+    n_ess[i] += curstate[j];
+    geneprob[j] += (1-p);
+    if(saveoutput) Output[j][i] = curstate[j];
       }
       n_ess[i] = n_genes - n_ess[i]; /* current number essential */
 
       if(calcprob) {
-	logprob[i] = -(double)n_mutants * log((double)cursum);
-	logprob[i] += lgammafn((double)curnum+1) + lgammafn((double)(n_genes-curnum+1));
+    logprob[i] = -(double)n_mutants * log((double)cursum);
+    logprob[i] += lgammafn((double)curnum+1) + lgammafn((double)(n_genes-curnum+1));
       }
     }
 
@@ -219,8 +218,8 @@ void negenes(int n_genes, int n_mutants, int *n_sites, int *n_sites2,
  * n_genes       = number of genes
  **********************************************************************/
 double gibbsProb(int curstate, int curstate_next, int curstate_prev,
-		 int n_sites, int n_sites2, int n_sites2_prev,
-		 int curnum, int cursum, int n_mutants, int n_genes)
+         int n_sites, int n_sites2, int n_sites2_prev,
+         int curnum, int cursum, int n_mutants, int n_genes)
 {
   int Ai, Bi;
   double p;
@@ -318,6 +317,3 @@ int random_int(int low, int high)
 
 
 /* end of negenes.c */
-
-
-

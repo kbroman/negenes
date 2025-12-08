@@ -1,5 +1,10 @@
 ## Revision history for the R/negenes package
 
+### Version 1.3-1, 2025-12-08
+
+- Removed includes of `R_ext/PrtUtil.h` which began causing warnings on CRAN.
+
+
 ### Version 1.2, 2025-05-11
 
 - Changelog -> NEWS.md
