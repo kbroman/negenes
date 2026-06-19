@@ -5,8 +5,6 @@
 [![r-universe badge](https://kbroman.r-universe.dev/negenes/badges/version)](https://kbroman.r-universe.dev/negenes)
 [![zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3361121.svg)](https://doi.org/10.5281/zenodo.3361121)
 
-[Karl W Broman](https://kbroman.org)
-
 [R/negenes](https://github.com/kbroman/negenes) is an R package for estimating the number of essential genes
 in a genome on the basis of data from a random transposon mutagenesis
 experiment, through the use of a Gibbs sampler.
